@@ -1,7 +1,7 @@
-import axios from 'axios'
+import axios from "axios";
 
-
-const API_URL = "http://localhost:3005";
+// const API_URL = "http://localhost:3005";
+const API_URL = "https://farmera-g98z.onrender.com";
 // const getAuthHeader = () => {
 //   const token = localStorage.getItem('token');
 //   return {
@@ -10,45 +10,48 @@ const API_URL = "http://localhost:3005";
 //   };
 // };
 
-
-
 //user register api
 
 export const userregister = async (data) => {
-    try {
-        return await axios.post(`${API_URL}/user/register`, data);
-    } catch (error) {
-        throw error.response?.data || error.message;
-    }
+  try {
+    return await axios.post(`${API_URL}/user/register`, data);
+  } catch (error) {
+    throw error.response?.data || error.message;
+  }
 };
 
 //user login api
 
 export const userlogin = async (data) => {
-    try{
-        return await axios.post(`${API_URL}/user/login`, data);
-    } catch (error) {
-        throw error.response?.data || error.message;
-    }
+  try {
+    return await axios.post(`${API_URL}/user/login`, data);
+  } catch (error) {
+    throw error.response?.data || error.message;
+  }
 };
 
 //HARVESTED CROPS
 //farmer crop posting
 
 export const harvestedcroppost = async (data, userid) => {
-    try {
-        return await axios.post(`${API_URL}/farmer/harvested/addmycrops/${userid}`, data)
-    } catch (error) {
-        throw error.response?.data || error.message;
-    }
+  try {
+    return await axios.post(
+      `${API_URL}/farmer/harvested/addmycrops/${userid}`,
+      data,
+    );
+  } catch (error) {
+    throw error.response?.data || error.message;
+  }
 };
 
 //get farmers own harvested crop
 
 export const getmyharvestedcrop = async (userid) => {
   try {
-    const response = await axios.get(`${API_URL}/farmer/harvested/viewmycrops/${userid}`);
-    return response.data; 
+    const response = await axios.get(
+      `${API_URL}/farmer/harvested/viewmycrops/${userid}`,
+    );
+    return response.data;
   } catch (error) {
     throw error.response?.data || error.message;
   }
@@ -58,8 +61,10 @@ export const getmyharvestedcrop = async (userid) => {
 
 export const viewallharvestedcrops = async () => {
   try {
-    const response = await axios.get(`${API_URL}/farmer/harvested/viewallharvestedcrops`)
-    return response.data; 
+    const response = await axios.get(
+      `${API_URL}/farmer/harvested/viewallharvestedcrops`,
+    );
+    return response.data;
   } catch (error) {
     throw error.response?.data || error.message;
   }
@@ -69,8 +74,10 @@ export const viewallharvestedcrops = async () => {
 
 export const getharvestedcropdetails = async (id) => {
   try {
-    const response = await axios.get(`${API_URL}/farmer/harvested/viewcropdetails/${id}`)
-    return response.data; 
+    const response = await axios.get(
+      `${API_URL}/farmer/harvested/viewcropdetails/${id}`,
+    );
+    return response.data;
   } catch (error) {
     throw error.response?.data || error.message;
   }
@@ -82,7 +89,7 @@ export const updatemycrop = async (id, updatedData) => {
   try {
     const response = await axios.put(
       `${API_URL}/farmer/harvested/updatemycrop/${id}`,
-      updatedData
+      updatedData,
     );
     return response.data;
   } catch (error) {
@@ -96,7 +103,7 @@ export const updatemycrop = async (id, updatedData) => {
 export const deletemycrop = async (id) => {
   try {
     const response = await axios.delete(
-      `${API_URL}/farmer/harvested/deletemycrop/${id}`
+      `${API_URL}/farmer/harvested/deletemycrop/${id}`,
     );
     return response.data;
   } catch (error) {
@@ -105,24 +112,28 @@ export const deletemycrop = async (id) => {
   }
 };
 
-
 //FUTURE HARVEST CROPS
 //farmer crop posting
 
-export const futharvestcroppost = async (data,userid) => {
-    try{
-        return await axios.post(`${API_URL}/farmer/futureharvest/addmyfutcrops/${userid}`, data)
-    } catch (error) {
-        throw error.response?.data || error.message;
-    }
+export const futharvestcroppost = async (data, userid) => {
+  try {
+    return await axios.post(
+      `${API_URL}/farmer/futureharvest/addmyfutcrops/${userid}`,
+      data,
+    );
+  } catch (error) {
+    throw error.response?.data || error.message;
+  }
 };
 
 //get farmers own future harvest crop
 
 export const getmyfutharvestcrop = async (userid) => {
   try {
-    const response = await axios.get(`${API_URL}/farmer/futureharvest/viewmyfutcrops/${userid}`);
-    return response.data; 
+    const response = await axios.get(
+      `${API_URL}/farmer/futureharvest/viewmyfutcrops/${userid}`,
+    );
+    return response.data;
   } catch (error) {
     throw error.response?.data || error.message;
   }
@@ -132,8 +143,10 @@ export const getmyfutharvestcrop = async (userid) => {
 
 export const viewallfutharvestcrops = async () => {
   try {
-    const response = await axios.get(`${API_URL}/farmer/futureharvest/viewallfutharvestcrops`)
-    return response.data; 
+    const response = await axios.get(
+      `${API_URL}/farmer/futureharvest/viewallfutharvestcrops`,
+    );
+    return response.data;
   } catch (error) {
     throw error.response?.data || error.message;
   }
@@ -143,8 +156,10 @@ export const viewallfutharvestcrops = async () => {
 
 export const getfutharvestcropdetails = async (id) => {
   try {
-    const response = await axios.get(`${API_URL}/farmer/futureharvest/viewfutcropdetails/${id}`)
-    return response.data; 
+    const response = await axios.get(
+      `${API_URL}/farmer/futureharvest/viewfutcropdetails/${id}`,
+    );
+    return response.data;
   } catch (error) {
     throw error.response?.data || error.message;
   }
@@ -161,7 +176,7 @@ export const updateFutureHarvestCrop = async (id, formData) => {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-      }
+      },
     );
     return res.data;
   } catch (error) {
@@ -174,7 +189,9 @@ export const updateFutureHarvestCrop = async (id, formData) => {
 
 export const deleteFutureHarvestCrop = async (id) => {
   try {
-    const response = await axios.delete(`${API_URL}/farmer/futureharvest/deletemycrop/${id}`);
+    const response = await axios.delete(
+      `${API_URL}/farmer/futureharvest/deletemycrop/${id}`,
+    );
     return response.data;
   } catch (error) {
     console.error("Delete future harvest crop error:", error);
@@ -187,7 +204,10 @@ export const deleteFutureHarvestCrop = async (id) => {
 
 export const getFarmerProfile = async (id) => {
   try {
-    console.log("Requesting URL:", `${API_URL}farmer/profile/viewprofile/${id}`);
+    console.log(
+      "Requesting URL:",
+      `${API_URL}farmer/profile/viewprofile/${id}`,
+    );
     const res = await axios.get(`${API_URL}/farmer/profile/viewprofile/${id}`);
     return res.data; // should return your farmer object
   } catch (error) {
@@ -203,7 +223,7 @@ export const updateFarmerProfile = async (id, profileData) => {
       profileData,
       {
         headers: { "Content-Type": "multipart/form-data" },
-      }
+      },
     );
     return res.data;
   } catch (error) {
@@ -211,7 +231,6 @@ export const updateFarmerProfile = async (id, profileData) => {
     throw error.response?.data || error.message;
   }
 };
-
 
 //Bank details
 
@@ -228,7 +247,10 @@ export const getBankDetails = async (farmerId) => {
 // ADD bank details for a farmer
 export const addBankDetails = async (farmerId, bankData) => {
   try {
-    const res = await axios.post(`${API_URL}/farmer/bank/addbank/${farmerId}`, bankData);
+    const res = await axios.post(
+      `${API_URL}/farmer/bank/addbank/${farmerId}`,
+      bankData,
+    );
     return res.data; // { message, bankdetails }
   } catch (err) {
     throw err.response?.data || err.message;
@@ -238,7 +260,10 @@ export const addBankDetails = async (farmerId, bankData) => {
 // UPDATE bank details for a farmer
 export const updateBankDetails = async (farmerId, bankData) => {
   try {
-    const res = await axios.put(`${API_URL}/farmer/bank/editbank/${farmerId}`, bankData);
+    const res = await axios.put(
+      `${API_URL}/farmer/bank/editbank/${farmerId}`,
+      bankData,
+    );
     return res.data; // { message, bankdetails }
   } catch (err) {
     throw err.response?.data || err.message;
@@ -248,7 +273,9 @@ export const updateBankDetails = async (farmerId, bankData) => {
 // DELETE bank details for a farmer
 export const deleteBankDetails = async (farmerId) => {
   try {
-    const res = await axios.delete(`${API_URL}/farmer/bank/deletebank/${farmerId}`);
+    const res = await axios.delete(
+      `${API_URL}/farmer/bank/deletebank/${farmerId}`,
+    );
     return res.data; // { message }
   } catch (err) {
     throw err.response?.data || err.message;
@@ -259,18 +286,16 @@ export const deleteBankDetails = async (farmerId) => {
 // get profile
 
 export const getbuyerprofile = async (id) => {
-  const res = await axios.get(
-    `${API_URL}/buyer/profile/getprofile/${id}`
-  );
+  const res = await axios.get(`${API_URL}/buyer/profile/getprofile/${id}`);
   return res.data;
 };
 
-//update profile 
+//update profile
 
 export const updatebuyerprofile = async (id, data) => {
   const res = await axios.put(
     `${API_URL}/buyer/profile/updateprofile/${id}`,
-    data
+    data,
   );
   return res.data;
 };
@@ -279,38 +304,36 @@ export const updatebuyerprofile = async (id, data) => {
 export const addAddress = async (userId, addressData) => {
   const res = await axios.post(
     `${API_URL}/buyer/profile/addaddress/${userId}`,
-    addressData
+    addressData,
   );
   return res.data;
 };
 
 //Get Address
 export const getAddresses = (userId) => {
-  return axios.get(
-    `${API_URL}/buyer/profile/getaddresses/${userId}`
-  );
+  return axios.get(`${API_URL}/buyer/profile/getaddresses/${userId}`);
 };
 
 //Edit Address
 export const editAddress = (userId, addressId, data) => {
   return axios.put(
     `${API_URL}/buyer/profile/editaddress/${userId}/${addressId}`,
-    data
+    data,
   );
 };
 
 //dlt add
 export const deleteAddress = (userId, addressId) => {
   return axios.delete(
-    `${API_URL}/buyer/profile/deleteaddress/${userId}/${addressId}`
+    `${API_URL}/buyer/profile/deleteaddress/${userId}/${addressId}`,
   );
 };
 
 //query post
 export const postQuery = async (buyerId, queryData) => {
   const res = await axios.post(
-    `${API_URL}/buyer/query/queryask/${buyerId}`, 
-    queryData
+    `${API_URL}/buyer/query/queryask/${buyerId}`,
+    queryData,
   );
   return res.data;
 };
@@ -319,7 +342,7 @@ export const postQuery = async (buyerId, queryData) => {
 export const getBuyerQueries = async (buyerId) => {
   try {
     const res = await axios.get(
-      `${API_URL}/buyer/query/querygetbyid/${buyerId}`
+      `${API_URL}/buyer/query/querygetbyid/${buyerId}`,
     );
     return res.data;
   } catch (error) {
@@ -330,7 +353,9 @@ export const getBuyerQueries = async (buyerId) => {
 //get all query to farmer
 export const getFarmerQueries = async (farmerId) => {
   try {
-    const res = await axios.get(`${API_URL}/buyer/query/farmer/${farmerId}/queries`);
+    const res = await axios.get(
+      `${API_URL}/buyer/query/farmer/${farmerId}/queries`,
+    );
     return res.data; // contains { success: true, queries: [...] }
   } catch (error) {
     throw error.response?.data || error.message;
@@ -340,30 +365,30 @@ export const getFarmerQueries = async (farmerId) => {
 //rply to query from farmer
 export const replyToFarmerQuery = async (queryId, replyText) => {
   try {
-    const res = await axios.put(`${API_URL}/buyer/query/reply/${queryId}/reply`, {
-      reply: replyText,
-    });
+    const res = await axios.put(
+      `${API_URL}/buyer/query/reply/${queryId}/reply`,
+      {
+        reply: replyText,
+      },
+    );
     return res.data; // contains { success: true, message, query: {...} }
   } catch (error) {
     throw error.response?.data || error.message;
   }
 };
 
-
 //Placeorder post
 export const placeOrder = async (buyerId, data) => {
   const res = await axios.post(
     `${API_URL}/buyer/order/postorder/${buyerId}`,
-    data
+    data,
   );
   return res.data;
 };
 
 //get my orders to buyer
 export const getBuyerOrders = async (buyerId) => {
-  const res = await axios.get(
-    `${API_URL}/buyer/order/myorders/${buyerId}`
-  );
+  const res = await axios.get(`${API_URL}/buyer/order/myorders/${buyerId}`);
   return res.data;
 };
 
@@ -376,7 +401,7 @@ export const getFarmerOrders = async () => {
   }
 
   const response = await axios.get(
-    `${API_URL}/buyer/order/farmerorder/${farmerId}`
+    `${API_URL}/buyer/order/farmerorder/${farmerId}`,
   );
 
   return response.data; // array
@@ -389,7 +414,7 @@ export const updateOrderStatus = async (orderId, status) => {
 
   const response = await axios.patch(
     `${API_URL}/buyer/order/farmer/${orderId}/status`,
-    { status, farmerId }
+    { status, farmerId },
   );
 
   return response.data;
@@ -400,7 +425,7 @@ export const updateOrderStatus = async (orderId, status) => {
 export const getFarmerOrderCounts = async () => {
   const farmerId = localStorage.getItem("id");
   const res = await axios.get(
-    `${API_URL}/buyer/order/farmer/ordercount/${farmerId}`
+    `${API_URL}/buyer/order/farmer/ordercount/${farmerId}`,
   );
   return res.data;
 };
@@ -410,9 +435,7 @@ export const getFarmerOrderCounts = async () => {
 
 export const Farmermanage = async () => {
   try {
-    const res = await axios.get(
-      `${API_URL}/admin/manage/getfarmers`
-    );
+    const res = await axios.get(`${API_URL}/admin/manage/getfarmers`);
     return res.data.farmers;
   } catch (error) {
     throw error.response?.data || error.message;
